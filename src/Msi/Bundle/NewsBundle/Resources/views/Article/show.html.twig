@@ -5,3 +5,8 @@
 <p style="margin-top: -9px;"><em>by</em> <a href="#">{{ article.user.username }}</a> <em>{{ article.createdAt|date('Y-m-d') }}</em></p>
 {{ article.body|raw }}
 {% endblock content %}
+
+{% block breadcrumb %}
+<li><span class="divider"><i class="icon-white icon-chevron-right"></i></span> <a href="{{ path('homepage') }}">News</a></li>
+<li class="active"><span class="divider"><i class="icon-white icon-chevron-right"></i></span> {{ article.title }}</li>
+{% endblock breadcrumb %}

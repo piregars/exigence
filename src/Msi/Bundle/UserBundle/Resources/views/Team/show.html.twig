@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
     <div class="span8">
-        <h2>{{ team.name }}</h2>
+        <p><img class="thumbnail" src="{{ team.logoPath~'t_'~team.logoName }}" alt="0"></p>
         <div class="box">
             {% for user in team.users %}
                 <img class="thumbnail img-left" src="{{ user.avatarPath~'t_'~user.avatarName }}" alt="0">
@@ -17,3 +17,8 @@
     </div>
 </div>
 {% endblock content %}
+
+{% block breadcrumb %}
+<li><span class="divider"><i class="icon-white icon-chevron-right"></i></span> <a href="{{ path('homepage') }}">Teams</a></li>
+<li class="active"><span class="divider"><i class="icon-white icon-chevron-right"></i></span> {{ team.name }}</li>
+{% endblock breadcrumb %}

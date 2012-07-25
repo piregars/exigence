@@ -98,6 +98,9 @@ class Team
     {
         $file = $this->getUploadDir().$this->logoName;
         if (is_file($file)) unlink($file);
+
+        $file = $this->getUploadDir().'t_'.$this->logoName;
+        if (is_file($file)) unlink($file);
     }
 
     /**
@@ -121,6 +124,7 @@ class Team
         $im = new Imaginator($this->getUploadDir().$this->logoName);
 
         $im->resize(298, 100)->save();
+        $im->resize(620, 190)->saveAs($this->getUploadDir().'t_'.$this->logoName);
 
         unset($this->logoFile);
     }
