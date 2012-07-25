@@ -28,7 +28,9 @@
         {{ msi_block_render_block('content_bottom', page) }}
     </div>
     <div class="span4">
-        {{ msi_block_render_block('sidebar', page) }}
+        <div class="box">
+            {{ msi_block_render_block('sidebar', page) }}
+        </div>
     </div>
 </div>
 {% endblock content %}
