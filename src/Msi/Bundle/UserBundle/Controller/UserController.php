@@ -1,6 +1,6 @@
 <?php
 
-namespace Msi\Bundle\NewsBundle\Controller;
+namespace Msi\Bundle\UserBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Response;
