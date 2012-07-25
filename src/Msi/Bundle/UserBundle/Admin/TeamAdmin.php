@@ -22,7 +22,8 @@ class TeamAdmin extends Admin
     {
         $builder
             ->add('name')
-            ->add('logoFile', 'file')
+            ->add('logoFile', 'file', array('label' => 'Logo'))
+            ->add('game')
         ;
     }
 }
