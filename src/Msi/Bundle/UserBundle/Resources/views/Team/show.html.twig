@@ -1,9 +1,15 @@
-{% for user in users %}
+{% extends 'MsiMainBundle::layout.html.twig' %}
 
+{% block content %}
+<h2>{{ team.name }}</h2>
+{% for user in team.users %}
+<h3><a href="#"><img class="thumbnail inline" src="{{ user.avatar }}" alt="0"> {{ user.nickname }}</a></h3>
+{% if team.users|length != loop.index %}<hr>{% endif %}
 {% endfor %}
+{% endblock content %}
 
 
-<h3>Strafeous</h3>
+{#<h3>Strafeous</h3>
 <div class="row">
 <div class="span2">
 <p><img class="thumbnail" src="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-prn1/531361_4324151061654_471330219_n.jpg" alt="Strafeous" /></p>
@@ -21,3 +27,4 @@
 </div>
 </div>
 <hr />
+#}

@@ -52,12 +52,18 @@ class Team
      */
     protected $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="team")
+     */
+    protected $users;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->enabled = false;
         $this->position = 1;
+        $this->users = new ArrayCollection();
     }
 
     /**
@@ -66,6 +72,18 @@ class Team
     public function preUpdate()
     {
         $this->updatedAt = new \DateTime();
+    }
+
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    public function setUsers($users)
+    {
+        $this->users = $users;
+
+        return $this;
     }
 
     public function getCreatedAt()

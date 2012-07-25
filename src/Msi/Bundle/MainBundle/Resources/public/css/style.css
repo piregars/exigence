@@ -93,6 +93,9 @@ hr {
     padding: 10px;
     margin-bottom: 9px;
 }
+.inline {
+    display: inline !important;
+}
 /*Bootstrap*/
 .thumbnail {
     border: 1px solid #333333;

@@ -1,0 +1,3 @@
+{% for team in teams %}
+    <h3><a href="{{ path('msi_user_team_show', {'slug': team.slug}) }}"><img class="thumbnail inline" src="http://placehold.it/64x64" alt="0"> {{ team.name }}</a></h3>
+{% endfor %}

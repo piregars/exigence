@@ -55,6 +55,11 @@ class User extends BaseUser
     protected $location;
 
     /**
+     * @ORM\Column(nullable=true)
+     */
+    protected $nickname;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $bio;
@@ -65,7 +70,7 @@ class User extends BaseUser
     protected $position;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Team")
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="users")
      */
     protected $team;
 
@@ -193,6 +198,18 @@ class User extends BaseUser
     {
         $this->avatarFile = $avatarFile;
         $this->updatedAt = new \DateTime();
+
+        return $this;
+    }
+
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
 
         return $this;
     }

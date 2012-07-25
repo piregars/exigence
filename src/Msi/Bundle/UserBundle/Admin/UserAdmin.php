@@ -37,6 +37,7 @@ class UserAdmin extends Admin
             ->add('username')
             ->add('team', 'entity', array('empty_value' => 'Select...', 'class' => 'MsiUserBundle:Team'))
             ->add('email')
+            ->add('nickname')
             ->add('avatarFile', 'file', array('label' => 'Avatar'))
             ->add('location')
             ->add('bio', 'textarea')
