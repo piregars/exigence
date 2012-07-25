@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}An Error Occurred: {{ status_text }}{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}">
+{% endblock css %}
+
+{% block body %}
+<div class="container">
+    <div class="hero-unit" style="margin-top: 20px;">
+        <h1>
+            {{ status_code }} {{ status_text }}
+            {% if status_code == 500 %}
+                <br><small>Something is broken. You better tell Gnal and let him know what you were doing when this error occurred.</small>
+            {% elseif status_code == 403 %}
+                <br><small>Access denied. You do not have permission to access this area of the site.</small>
+            {% endif %}
+        </h1>
+    </div>
+</div>
+{% endblock body %}
