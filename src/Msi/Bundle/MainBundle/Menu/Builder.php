@@ -15,7 +15,7 @@ class Builder extends ContainerAware
         $menu = $factory->createFromNode($root);
 
         foreach ($menu as $m) {
-            if ($pathInfo === $m->getUri() || preg_match('@^'.$m->getUri().'@', $pathInfo)) {
+            if ($pathInfo === $m->getUri() || preg_match('@^'.$pathInfo.'@', $m->getUri())) {
                 $m->setCurrent(true);
             }
         }
