@@ -29,12 +29,3 @@
     </div>
 </div>
 {% endblock content %}
-
-{% block breadcrumb %}
-{% if page.home != true %}
-<li class="active">
-    <span class="divider"><i class="icon-white icon-chevron-right"></i></span>
-    {{ page.translation.title }}
-</li>
-{% endif %}
-{% endblock breadcrumb %}
