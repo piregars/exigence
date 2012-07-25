@@ -124,7 +124,7 @@ class Team
         $im = new Imaginator($this->getUploadDir().$this->logoName);
 
         $im->resize(298, 100)->save();
-        $im->resize(620, 190)->saveAs($this->getUploadDir().'t_'.$this->logoName);
+        $im->resize(610, 190)->saveAs($this->getUploadDir().'t_'.$this->logoName);
 
         unset($this->logoFile);
     }
