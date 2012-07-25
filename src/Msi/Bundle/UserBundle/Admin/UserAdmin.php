@@ -34,6 +34,9 @@ class UserAdmin extends Admin
         $builder
             ->add('username')
             ->add('email')
+            ->add('avatarFile', 'file', array('label' => 'Avatar'))
+            ->add('location')
+            ->add('bio', 'textarea')
             ->add('roles', 'choice', array(
                 'choices' => $roles,
                 'expanded' => false,
