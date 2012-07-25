@@ -17,6 +17,7 @@ class UserAdmin extends Admin
             ->add('id')
             ->add('avatar', 'image')
             ->add('username', 'text', array('edit' => true))
+            ->add('nickname')
             ->add('team')
             ->add('', 'action')
         ;
