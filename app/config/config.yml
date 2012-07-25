@@ -75,7 +75,7 @@ fos_user:
 msi_page:
     template_choices:
         'MsiMainBundle:Page:default.html.twig': 'default'
-        'MsiMainBundle:Page:default_titleless.html.twig': 'default titleless'
+        'MsiMainBundle:Page:wide.html.twig': 'wide'
 
 msi_block:
     template_choices:
