@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class TeamController extends ContainerAware
 {
     /**
-     * @Route("/team/list", defaults={"_locale" = "en"})
+     * @Route("/teams/list", defaults={"_locale" = "en"})
      * @Template()
      */
     public function listAction()
@@ -23,7 +23,7 @@ class TeamController extends ContainerAware
     }
 
     /**
-     * @Route("/team/{slug}", defaults={"_locale" = "en"})
+     * @Route("/teams/{slug}", defaults={"_locale" = "en"})
      * @Template()
      */
     public function showAction()
