@@ -8,7 +8,7 @@
             {% for user in team.users %}
                 <img class="thumbnail img-left" src="{{ user.avatarPath~'t_'~user.avatarName }}" alt="0">
                 <h3>{{ user.nickname }}</h3>
-                <p>{{ user.bio|truncate(200) }}</p>
+                <p>{{ user.bio|truncate(125) }}</p>
                 <a class="btn btn-mini btn-inverse" href="#">View profile</a>
                 <div class="clearfix"></div>
                 {% if team.users|length != loop.index %}<hr>{% endif %}
