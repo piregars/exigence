@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Msi\Bundle\ImaginatorBundle\Imaginator\Imaginator;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * @ORM\Table(name="user_team")
  * @ORM\Entity
@@ -117,7 +120,7 @@ class Team
 
         $im = new Imaginator($this->getUploadDir().$this->logoName);
 
-        $im->resize(278, 100)->saveAs($this->getUploadDir().'t_'.$this->logoName);
+        $im->resize(278, 100)->save();
 
         unset($this->logoFile);
     }
