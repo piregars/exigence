@@ -16,7 +16,7 @@ class UserAdmin extends Admin
         $builder
             ->add('id')
             ->add('username', 'text', array('edit' => true))
-            ->add('team', 'boolean')
+            ->add('team')
             ->add('', 'action')
         ;
     }
@@ -35,6 +35,7 @@ class UserAdmin extends Admin
 
         $builder
             ->add('username')
+            ->add('team', 'entity', array('class' => 'MsiUserBundle:Team'))
             ->add('email')
             ->add('avatarFile', 'file', array('label' => 'Avatar'))
             ->add('location')

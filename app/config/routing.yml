@@ -32,9 +32,9 @@ MsiAdminBundle:
     prefix:   /
     defaults: { _locale: en }
 
-#fos_user_group:
-#    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
-#    prefix: admin/group/
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: admin/group/
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

@@ -65,7 +65,7 @@ class User extends BaseUser
     protected $position;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\ManyToOne(targetEntity="Team")
      */
     protected $team;
 
@@ -84,7 +84,6 @@ class User extends BaseUser
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->position = 1;
-        $this->team = false;
     }
 
     public function getUploadDir()
