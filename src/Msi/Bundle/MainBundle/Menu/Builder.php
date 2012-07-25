@@ -14,7 +14,7 @@ class Builder extends ContainerAware
         $menu = $factory->createFromNode($root);
 
         foreach ($menu as $m) {
-            if ('/app_dev.php'.$this->container->get('request')->getPathInfo() === $m->getUri()) {
+            if ($this->container->get('request')->getPathInfo() === $m->getUri()) {
                 $m->setCurrent(true);
             }
         }
