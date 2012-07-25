@@ -41,6 +41,7 @@ class UserAdmin extends Admin
 
         if ($isSuperAdmin) {
             $roles['ROLE_ADMIN'] = 'ROLE_ADMIN';
+            $roles['ROLE_SUPER_ADMIN'] = 'ROLE_SUPER_ADMIN';
         }
 
         $builder
