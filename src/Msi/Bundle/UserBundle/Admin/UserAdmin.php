@@ -15,6 +15,7 @@ class UserAdmin extends Admin
     {
         $builder
             ->add('id')
+            ->add('avatar', 'image')
             ->add('username', 'text', array('edit' => true))
             ->add('team')
             ->add('', 'action')

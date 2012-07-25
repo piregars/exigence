@@ -3,28 +3,7 @@
 {% block content %}
 <h2>{{ team.name }}</h2>
 {% for user in team.users %}
-<h3><a href="#"><img class="thumbnail inline" src="{{ user.avatar }}" alt="0"> {{ user.nickname }}</a></h3>
-{% if team.users|length != loop.index %}<hr>{% endif %}
+    <h3><a href="#"><img class="thumbnail inline" src="{{ user.avatar }}" alt="0"> {{ user.nickname }}</a></h3>
+    {% if team.users|length != loop.index %}<hr>{% endif %}
 {% endfor %}
 {% endblock content %}
-
-
-{#<h3>Strafeous</h3>
-<div class="row">
-<div class="span2">
-<p><img class="thumbnail" src="https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-prn1/531361_4324151061654_471330219_n.jpg" alt="Strafeous" /></p>
-</div>
-<div class="span6">
-<div class="row">
-<div class="span3">
-<p><small><em>Real name:</em></small> Drew Booth <br /> <small><em>Email:</em></small> strafeous@gmail.com <br /> <small><em>Country:</em></small> U.S.A.</p>
-</div>
-<div class="span3">
-<p><small><em>Location:</em></small> Austin, TX <br /> <small><em>Age:</em></small> 22 <br /> <small><em>Member since:</em></small> 2012/07/22</p>
-</div>
-</div>
-<p><small><em>Bio:</em></small> Pellentesque ut massa vitae tortor consequat adipiscing. Nunc consequat rutrum urna eu rhoncus. Aliquam erat volutpat. Aenean id nisl vel nisl sodales pharetra. Nam bibendum ipsum sed risus condimentum congue. In erat lacus, vestibulum quis pulvinar a, placerat sed tortor. Proin pellentesque nibh nulla.</p>
-</div>
-</div>
-<hr />
-#}

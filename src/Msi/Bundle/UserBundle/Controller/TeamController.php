@@ -30,7 +30,7 @@ class TeamController extends ContainerAware
     {
         $slug = $this->container->get('request')->attributes->get('slug');
 
-        $team = $this->container->get('msi_user.team_manager')->findBy(array('a.enabled' => true, 'a.slug' => $slug), array(), array('a.position' => 'ASC'))->getQuery()->getSingleResult();
+        $team = $this->container->get('msi_user.team_manager')->findBy(array('a.enabled' => true, 'a.slug' => $slug), array('a.users' => 'u'), array('u.position' => 'ASC'))->getQuery()->getSingleResult();
 
         return array('team' => $team);
     }
