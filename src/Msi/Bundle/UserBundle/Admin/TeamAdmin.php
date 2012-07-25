@@ -11,6 +11,7 @@ class TeamAdmin extends Admin
         $builder
             ->add('id')
             ->add('enabled', 'boolean')
+            ->add('logo', 'image')
             ->add('name')
             ->add('updatedAt', 'date')
             ->add('', 'action')
@@ -21,6 +22,7 @@ class TeamAdmin extends Admin
     {
         $builder
             ->add('name')
+            ->add('logoFile', 'file')
         ;
     }
 }

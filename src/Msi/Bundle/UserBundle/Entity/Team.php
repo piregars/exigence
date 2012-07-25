@@ -62,6 +62,21 @@ class Team
      */
     protected $users;
 
+    /**
+     * @ORM\Column(nullable=true)
+     */
+    protected $logoName;
+
+    /**
+     * @ORM\Column(nullable=true)
+     */
+    protected $logoPath;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    protected $logoFile;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -71,12 +86,103 @@ class Team
         $this->users = new ArrayCollection();
     }
 
+    public function getUploadDir()
+    {
+        return __DIR__.'/../../../../../web/uploads/teams/logos/';
+    }
+
+    public function removeFile()
+    {
+        $file = $this->getUploadDir().$this->logoName;
+        if (is_file($file)) unlink($file);
+    }
+
     /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        $this->removeFile();
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function postUpload()
+    {
+        if ($this->logoFile === null) return;
+
+        $this->logoFile->move($this->getUploadDir(), $this->logoName);
+
+        $im = new Imaginator($this->getUploadDir().$this->logoName);
+
+        $im->resize(278, 100)->saveAs($this->getUploadDir().'t_'.$this->logoName);
+
+        unset($this->logoFile);
+    }
+
+    /**
+     * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
-    public function preUpdate()
+    public function preUpload()
     {
         $this->updatedAt = new \DateTime();
+
+        if ($this->logoFile === null) return;
+
+        $ext = $this->logoFile->guessExtension();
+
+        if (!in_array($ext, array('jpg', 'jpeg', 'gif', 'png'))) {
+            die('The file must be either jpg or png or gif.');
+        }
+
+        $this->removeFile();
+        $this->logoName = uniqid(time()).'.'.$ext;
+        $this->logoPath = '/uploads/teams/logos/';
+    }
+
+    public function getLogo()
+    {
+        return $this->logoPath.$this->logoName;
+    }
+
+    public function getLogoName()
+    {
+        return $this->logoName;
+    }
+
+    public function setLogoName($logoName)
+    {
+        $this->logoName = $logoName;
+
+        return $this;
+    }
+
+    public function getLogoPath()
+    {
+        return $this->logoPath;
+    }
+
+    public function setLogoPath($logoPath)
+    {
+        $this->logoPath = $logoPath;
+
+        return $this;
+    }
+
+    public function getLogoFile()
+    {
+        return $this->logoFile;
+    }
+
+    public function setLogoFile($logoFile)
+    {
+        $this->logoFile = $logoFile;
+        $this->updatedAt = new \DateTime();
+
+        return $this;
     }
 
     public function getUsers()
