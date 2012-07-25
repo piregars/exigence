@@ -23,14 +23,12 @@
 {% block content %}
 <div class="row">
     <div class="span8">
-        {#<div style="border-right: 1px dotted #333333; padding-right: 20px;">#}
-            {{ msi_block_render_block('content_top', page) }}
-            {{ msi_block_render_block('content', page) }}
-            {{ msi_block_render_block('content_bottom', page) }}
-        {#</div>#}
+        {{ msi_block_render_block('content_top', page) }}
+        <div class="box">{{ msi_block_render_block('content', page) }}</div>
+        {{ msi_block_render_block('content_bottom', page) }}
     </div>
     <div class="span4">
-        {{ msi_block_render_block('sidebar', page) }}
+        <div class="box">{{ msi_block_render_block('sidebar', page) }}</div>
     </div>
 </div>
 {% endblock content %}
