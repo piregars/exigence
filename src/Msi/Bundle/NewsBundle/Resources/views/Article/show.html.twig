@@ -1,0 +1,7 @@
+{% extends 'MsiMainBundle::layout.html.twig' %}
+
+{% block content %}
+<h2>{{ article.title }}</h2>
+<p style="margin-top: -9px;"><em>by</em> <a href="#">{{ article.user.username }}</a> <em>{{ article.createdAt|date('Y-m-d') }}</em></p>
+{{ article.body|raw }}
+{% endblock content %}
