@@ -21,6 +21,7 @@ security:
         - { path: delete/$|delete$, role: ROLE_ADMIN }
         - { path: ^/(fr|en)/admin/blog/, role: ROLE_INNKEEPER }
         - { path: ^/(fr|en)/admin/, role: ROLE_ADMIN }
+        - { path: ^/, role: ROLE_ADMIN }
 
     role_hierarchy:
         ROLE_INNKEEPER:   ROLE_USER
