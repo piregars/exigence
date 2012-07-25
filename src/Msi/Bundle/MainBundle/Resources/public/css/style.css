@@ -63,8 +63,11 @@ a:hover {
             border-radius: 4px;
 }
 #menu ul li a:hover, #menu ul li.current a {
-    background: #e1e1e1;
-    color: #000;
+    /*background: #e1e1e1;*/
+    color: #747185;
+}
+#menu ul li:first-child a {
+    padding-left: 0;
 }
 #body {
     padding: 10px 0 11px;
@@ -81,6 +84,7 @@ a:hover {
 }
 #footer {
     background: #222222;
+    border-bottom: 1px solid #333333;
     padding: 20px 0 11px;
 }
 hr {
