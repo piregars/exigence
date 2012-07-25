@@ -26,14 +26,22 @@ class UserAdmin extends Admin
     public function buildForm($builder)
     {
         $roles = array();
-        foreach ($this->adminServiceIds as $serviceId) {
-            $roles['ROLE_'.strtoupper($serviceId).'_LIST'] = strtoupper($serviceId).'_READ';
-            $roles['ROLE_'.strtoupper($serviceId).'_CREATE'] = strtoupper($serviceId).'_CREATE';
-            $roles['ROLE_'.strtoupper($serviceId).'_UPDATE'] = strtoupper($serviceId).'_UPDATE';
-            $roles['ROLE_'.strtoupper($serviceId).'_DELETE'] = strtoupper($serviceId).'_DELETE';
+        $isAdmin = $this->container->get('security.context')->isGranted('ROLE_ADMIN');
+        $isSuperAdmin = $this->container->get('security.context')->isGranted('ROLE_SUPER_ADMIN');
+
+        if ($isAdmin) {
+            foreach ($this->adminServiceIds as $serviceId) {
+                $roles['ROLE_'.strtoupper($serviceId).'_READ'] = strtoupper($serviceId).'_READ';
+                $roles['ROLE_'.strtoupper($serviceId).'_CREATE'] = strtoupper($serviceId).'_CREATE';
+                $roles['ROLE_'.strtoupper($serviceId).'_UPDATE'] = strtoupper($serviceId).'_UPDATE';
+                $roles['ROLE_'.strtoupper($serviceId).'_DELETE'] = strtoupper($serviceId).'_DELETE';
+            }
+            $roles['ROLE_MANAGER'] = 'ROLE_MANAGER';
         }
 
-        $roles['ROLE_ADMIN'] = 'ROLE_ADMIN';
+        if ($isSuperAdmin) {
+            $roles['ROLE_ADMIN'] = 'ROLE_ADMIN';
+        }
 
         $builder
             ->add('username')
@@ -43,19 +51,23 @@ class UserAdmin extends Admin
             ->add('avatarFile', 'file', array('label' => 'Avatar'))
             ->add('location')
             ->add('bio', 'textarea')
-            ->add('roles', 'choice', array(
-                'choices' => $roles,
-                'expanded' => false,
-                'multiple' => true,
-                'required' => false,
-            ))
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
                 'invalid_message' => 'The password fields must match.',
                 'first_name' => 'Password',
                 'second_name' => 'Confirm password',
-                'required' => preg_replace(array('#^[a-z]+_[a-z]+_[a-z]+_#'), array(''), $this->container->get('request')->attributes->get('_route')) === 'edit' ? false : true,
             ))
         ;
+
+        if ($isAdmin) {
+            $builder->
+                add('roles', 'choice', array(
+                    'choices' => $roles,
+                    'expanded' => false,
+                    'multiple' => true,
+                    'required' => false,
+                ))
+            ;
+        }
     }
 }
