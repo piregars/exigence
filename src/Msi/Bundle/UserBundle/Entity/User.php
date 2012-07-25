@@ -60,6 +60,16 @@ class User extends BaseUser
     protected $bio;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    protected $position;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $team;
+
+    /**
      * @ORM\PrePersist()
      */
     public function prePersist()
@@ -73,6 +83,8 @@ class User extends BaseUser
 
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+        $this->position = 1;
+        $this->team = false;
     }
 
     public function getUploadDir()
@@ -218,6 +230,30 @@ class User extends BaseUser
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    public function setTeam($team)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    public function setPosition($position)
+    {
+        $this->position = $position;
 
         return $this;
     }

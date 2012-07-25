@@ -14,7 +14,9 @@ class UserAdmin extends Admin
     public function buildTable($builder)
     {
         $builder
+            ->add('id')
             ->add('username', 'text', array('edit' => true))
+            ->add('team', 'boolean')
             ->add('', 'action')
         ;
     }

@@ -1,3 +1,8 @@
+MsiUserBundle:
+    resource: "@MsiUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 MsiNewsBundle:
     resource: "@MsiNewsBundle/Controller/"
     type:     annotation
