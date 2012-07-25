@@ -100,6 +100,9 @@ class User extends BaseUser
     {
         $file = $this->getUploadDir().$this->avatarName;
         if (is_file($file)) unlink($file);
+
+        $file = $this->getUploadDir().'t_'.$this->avatarName;
+        if (is_file($file)) unlink($file);
     }
 
     /**
@@ -123,6 +126,7 @@ class User extends BaseUser
         $im = new Imaginator($this->getUploadDir().$this->avatarName);
 
         $im->resize(48, 48)->save();
+        $im->resize(100, 100)->saveAs($this->getUploadDir().'t_'.$this->avatarName);
 
         unset($this->avatarFile);
     }

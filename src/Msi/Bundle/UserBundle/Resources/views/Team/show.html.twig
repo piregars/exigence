@@ -1,9 +1,19 @@
 {% extends 'MsiMainBundle::layout.html.twig' %}
 
 {% block content %}
-<h2>{{ team.name }}</h2>
-{% for user in team.users %}
-    <h3><a href="#"><img class="thumbnail inline" src="{{ user.avatar }}" alt="0"> {{ user.nickname }}</a></h3>
-    {% if team.users|length != loop.index %}<hr>{% endif %}
-{% endfor %}
+<div class="row">
+    <div class="span8">
+        <h2>{{ team.name }}</h2>
+        <div class="box">
+            {% for user in team.users %}
+                <img class="thumbnail img-left" src="{{ user.avatarPath~'t_'~user.avatarName }}" alt="0">
+                <h3>{{ user.nickname }}</h3>
+                <p>{{ user.bio|truncate(200) }}</p>
+                <a class="btn btn-mini btn-inverse" href="#">View profile</a>
+                <div class="clearfix"></div>
+                {% if team.users|length != loop.index %}<hr>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock content %}

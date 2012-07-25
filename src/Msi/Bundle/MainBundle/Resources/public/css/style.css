@@ -91,12 +91,41 @@ hr {
     background: #222;
     border: 1px solid #333;
     padding: 10px;
-    margin-bottom: 9px;
+    margin-bottom: 18px;
+    display: block;
 }
 .inline {
-    display: inline !important;
+    display: inline;
+}
+.text-center {
+    text-align: center;
+}
+.marginless {
+    margin: 0;
+}
+.img-left {
+    margin-right: 18px;
+    float: left;
 }
 /*Bootstrap*/
 .thumbnail {
     border: 1px solid #333333;
+}
+.table td, .table th {
+    line-height: 22px !important;
+    border-radius: 0 !important;
+    border-color: #000;
+    background: #222222;
+}
+.table {
+    border: 0;
+    border-radius: 0 !important;
+    background: #000;
+    padding: 1px;
+}
+.table td:first-child, .table th:first-child {
+    border-left: 0;
+}
+.table tfoot td {
+    border-top: 0 !important;
 }

@@ -33,6 +33,11 @@ class Team
     protected $slug;
 
     /**
+     * @ORM\Column(nullable=true)
+     */
+    protected $game;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     protected $enabled;
@@ -94,6 +99,18 @@ class Team
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getGame()
+    {
+        return $this->game;
+    }
+
+    public function setGame($game)
+    {
+        $this->game = $game;
 
         return $this;
     }
