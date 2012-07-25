@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} - Team Exigence{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('/bundles/msimain/css/style.css') }}">
+{% endblock css %}
+
+{% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="{{ asset('/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+{% endblock js %}
+
+{% block body %}
+<!-- Header -->
+<div id="header">
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <h1 id="logo"><a href="{{ path('homepage') }}"><img height="100" src="/bundles/msimain/img/layout/exibanner.png" alt="0"></a></h1>
+                {#<h1 id="logo"><a href="{{ path('homepage') }}">TEAM EXIGENCE</a></h1>
+                <p><small><strong>GAGA DADA WAWA DIDI ... I RAPED YOUR MOTHER LAST DAY</strong></small></p>#}
+            </div>
+            <div class="span6" style="text-align: right;">
+                <a target="_blank" href="#"><img src="/bundles/msimain/img/layout/facebook.png" alt="facebook"></a>
+                <a target="_blank" href="#"><img src="/bundles/msimain/img/layout/twitter.png" alt="twitter"></a>
+                <a target="_blank" href="#"><img src="/bundles/msimain/img/layout/rss.png" alt="rss"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Menu -->
+<div id="menu">
+    <div class="container">
+        {{ knp_menu_render('MsiMainBundle:Builder:mainMenu') }}
+    </div>
+</div>
+<!-- Body -->
+<div id="body">
+    <div class="container">
+        {% block content %}{% endblock content %}
+    </div>
+</div>
+<!-- Footer -->
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p><small>&copy; {{ 'now'|date('Y') }} Team Exigence. All Rights Reserved.</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

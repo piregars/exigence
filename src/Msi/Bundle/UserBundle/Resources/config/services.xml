@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- User Manager -->
+        <service id="msi_user.user_manager" class="Msi\Bundle\AdminBundle\Entity\ModelManager">
+            <argument type="service" id="msi_admin.entity_manager" />
+            <argument>Msi\Bundle\UserBundle\Entity\User</argument>
+            <argument type="service" id="session" />
+        </service>
+        <!-- User Admin -->
+        <service id="msi_user_user_admin" parent="msi_admin.admin" class="Msi\Bundle\UserBundle\Admin\UserAdmin">
+            <argument />
+            <argument>MsiUserBundle</argument>
+            <call method="setModelManager">
+                <argument type="service" id="msi_user.user_manager" />
+            </call>
+            <tag name="msi.admin"></tag>
+        </service>
+    </services>
+</container>

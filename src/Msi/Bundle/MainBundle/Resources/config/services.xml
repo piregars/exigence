@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <parameters>
+        <parameter key="msi_main.example.class">Bundle\MainBundle\Example</parameter>
+    </parameters>
+    -->
+    <services>
+        <service id="msi_main.contact.form.handler" class="Msi\Bundle\MainBundle\Form\Handler\ContactFormHandler" scope="request">
+            <argument type="service" id="request" />
+            <argument type="service" id="templating" />
+            <argument type="service" id="mailer" />
+        </service>
+    </services>
+</container>

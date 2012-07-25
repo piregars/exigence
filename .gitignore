@@ -1,0 +1,16 @@
+/web/bundles/
+/app/bootstrap*
+/app/cache/*
+/app/logs/*
+/vendor/
+/web/css/
+/web/uploads/
+/web/js/
+/app/config/parameters.ini
+.DS_Store
+
+/public_html/bundles/
+/public_html/uploads/
+
+error_log
+public_html/error_log

@@ -1,0 +1,7 @@
+<form class="msi_main_contact_form" action="{{ path('msi_main_contact_contact') }}" method="POST" {{ form_enctype(form) }}>
+{% form_theme form 'MsiAdminBundle::form.html.twig' %}
+{{ form_widget(form) }}
+<div class="form-actions">
+    <input class="btn btn-primary" type="submit" value="{{ 'Send'|trans({}, 'MsiMainBundle') }}">
+</div>
+</form>

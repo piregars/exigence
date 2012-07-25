@@ -1,0 +1,55 @@
+{% extends 'MsiAdminBundle::layout.html.twig' %}
+
+{% block body %}
+    <div class="container well very-well" style="margin-top:60px; width: 460px;">
+        <div class="row">
+            <div class="span6 text-center">
+                    {% if app.session.hasFlash('success') %}
+                        <div class="alert alert-success fade in">
+                            <a class="close" data-dismiss="alert" href="#">×</a>
+                            <strong>Success! </strong>
+                            {{ app.session.flash('success') }}
+                        </div>
+                    {% endif %}
+                    <div class="page-header">
+                        <div class="pull-right">
+                            {% block actions %}{% endblock %}
+                        </div>
+                        <h1>Administration</h1>
+                    </div>
+                    {% block content %}
+                    <div style="margin-bottom: 18px;min-height: 202px;background: url(/bundles/msiadmin/images/layout/ajax-loader.gif) center center no-repeat #fff">
+                        <form style="background: #fff;" action="{{ path("fos_user_security_check") }}" method="post">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                            <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+                            <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                            <input {% if error %}style="border-color: #b94a48;"{% endif %} type="password" id="password" name="_password" />
+
+                            {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>#}
+
+                            <div class="form-actions">
+                                <input class="btn btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                            </div>
+                        </form>
+                    </div>
+                    {% endblock content %}
+                    <div class="clear"></div>
+            </div> <!-- endspan12 -->
+        </div> <!-- endrow -->
+    </div> <!-- endcontainer -->
+{% endblock %}
+
+{% block bottom_js %}
+{{ parent() }}
+<script>
+    var $form = $('form');
+
+    $form.find('input#_submit').on('click', function() {
+        $form.hide();
+    });
+</script>
+{% endblock %}

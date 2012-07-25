@@ -1,0 +1,36 @@
+{% extends 'MsiMainBundle::layout.html.twig' %}
+
+{% block meta_keywords %}
+{{ page.translation.metaKeywords }}
+{% endblock meta_keywords %}
+
+{% block meta_description %}
+{{ page.translation.metaDescription }}
+{% endblock meta_description %}
+
+{% block title %}{{ page.translation.title }}{{ parent() }}{% endblock title %}
+
+{% block css %}
+{{ parent() }}
+{{ page.css|raw }}
+{% endblock css %}
+
+{% block js %}
+{{ parent() }}
+{{ page.js|raw }}
+{% endblock js %}
+
+{% block content %}
+<div class="row">
+    <div class="span8">
+        {#<div style="border-right: 1px dotted #333333; padding-right: 20px;">#}
+            {{ msi_block_render_block('content_top', page) }}
+            {{ msi_block_render_block('content', page) }}
+            {{ msi_block_render_block('content_bottom', page) }}
+        {#</div>#}
+    </div>
+    <div class="span4">
+        {{ msi_block_render_block('sidebar', page) }}
+    </div>
+</div>
+{% endblock content %}
